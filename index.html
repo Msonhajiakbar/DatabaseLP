@@ -59,7 +59,7 @@
             .no-print { display: none !important; }
             body { background: #FFFFFF !important; }
             .shell-wrap { box-shadow: none !important; border: none !important; padding: 0 !important; }
-            #rubric-panel { display: block !important; page-break-inside: avoid; }
+            #rubric-panel, #step-1-content { display: block !important; page-break-inside: avoid; }
         }
     </style>
 </head>
@@ -171,7 +171,7 @@
 
             <!-- MAIN PAGE TITLE BANNER -->
             <header class="bg-white rounded-[26px] sm:rounded-[34px] p-5 sm:p-7 lg:p-8 shadow-md border-b-4 border-[#6528F7] flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div class="min-w-0">
+                <div class="min-w-0 flex-1">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EDE7FF] text-[#6528F7] text-[11px] sm:text-xs font-extrabold mb-2">
                         <span>Mata Kuliah Basis Data • 3 SKS • Semester 1</span>
                     </div>
@@ -197,68 +197,96 @@
                         </a>
                     </div>
                 </div>
+                <!-- Simple Visual Database Badge Illustration -->
+                <div class="hidden sm:flex items-center justify-center shrink-0">
+                    <div class="w-24 h-24 rounded-[26px] bg-[#EDE7FF] flex items-center justify-center relative">
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="animate-mascot">
+                            <ellipse cx="32" cy="16" rx="18" ry="6.5" fill="#A6E20E"/>
+                            <path d="M14 16V30C14 33.6 22.06 36.5 32 36.5C41.94 36.5 50 33.6 50 30V16" fill="#6528F7"/>
+                            <path d="M14 30V44C14 47.6 22.06 50.5 32 50.5C41.94 50.5 50 47.6 50 44V30" fill="#4A14D1"/>
+                            <ellipse cx="32" cy="16" rx="18" ry="6.5" fill="#A6E20E"/>
+                            <circle cx="48" cy="46" r="10" fill="#A6E20E" stroke="#FFFFFF" stroke-width="2.5"/>
+                            <path d="M44.5 46L47 48.5L52 43.5" stroke="#1A162E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
             </header>
 
-            <!-- STEP 1: FULL HIJAU LIMAU -->
-            <section id="step-1" class="scroll-mt-28 lg:scroll-mt-6 bg-dotted-lime text-[#1A162E] rounded-[26px] sm:rounded-[34px] p-4 sm:p-6 lg:p-8 shadow-md">
-                <div class="flex flex-wrap items-center justify-between gap-2.5 mb-4 sm:mb-5">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#6528F7] text-white font-extrabold text-[11px] sm:text-xs">
-                        <span class="w-5 h-5 rounded-full bg-[#A6E20E] text-[#1A162E] flex items-center justify-center text-[10px] sm:text-[11px] font-black shrink-0">01</span>
-                        <span>Langkah 01 • Keterkaitan RPS</span>
+            <!-- STEP 1: DROPDOWN / ACCORDION TERTUTUP DEFAULT -->
+            <section id="step-1" class="scroll-mt-28 lg:scroll-mt-6 bg-dotted-lime text-[#1A162E] rounded-[24px] sm:rounded-[30px] p-4 sm:px-6 sm:py-4 shadow-md transition-all">
+                <button type="button" onclick="toggleStep1()" aria-expanded="false" id="step-1-btn" class="w-full flex items-center justify-between gap-3 text-left cursor-pointer group">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#6528F7] text-white font-extrabold text-[11px] sm:text-xs">
+                            <span class="w-5 h-5 rounded-full bg-[#A6E20E] text-[#1A162E] flex items-center justify-center text-[10px] sm:text-[11px] font-black shrink-0">01</span>
+                            <span>Langkah 01 • Keterkaitan RPS (CPL &amp; CPMK)</span>
+                        </div>
+                        <span class="text-xs font-bold text-[#1A162E]/75 hidden sm:inline">Klik untuk melihat detail capaian pembelajaran</span>
                     </div>
-                    <span class="px-3 py-1 rounded-full bg-white text-[#1A162E] text-[11px] sm:text-xs font-extrabold shadow-xs">Capaian Pembelajaran</span>
-                </div>
-
-                <!-- 3 Clean Readable CPL & CPMK Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4">
-                    <div class="rounded-[22px] sm:rounded-[26px] bg-white p-4 sm:p-5 flex flex-col justify-between shadow-sm">
-                        <div>
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="px-3.5 py-1 rounded-full bg-[#6528F7] text-white text-xs font-extrabold">CPL-8</span>
-                                <span class="w-7 h-7 rounded-full bg-[#A6E20E] text-[#1A162E] flex items-center justify-center font-black text-xs">✓</span>
-                            </div>
-                            <h3 class="font-extrabold text-base text-[#1A162E]">Rekayasa Perangkat Lunak</h3>
-                            <p class="text-xs sm:text-[13px] text-slate-600 mt-1.5 leading-relaxed">
-                                Menguasai konsep &amp; implementasi basis data relasional sebagai fondasi utama pengembangan perangkat lunak layanan publik.
-                            </p>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2 text-[#6528F7]">
-                            <span class="w-2 h-2 rounded-full bg-[#A6E20E]"></span>
-                            <span class="text-xs font-extrabold">Terkait Langsung dengan RPS</span>
-                        </div>
+                    <div class="w-9 h-9 rounded-full bg-white group-hover:bg-[#6528F7] text-[#1A162E] group-hover:text-white flex items-center justify-center shadow-xs transition shrink-0">
+                        <svg id="step-1-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
                     </div>
+                </button>
 
-                    <div class="rounded-[22px] sm:rounded-[26px] bg-white p-4 sm:p-5 flex flex-col justify-between shadow-sm">
-                        <div>
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="px-3.5 py-1 rounded-full bg-[#6528F7] text-white text-xs font-extrabold">CPMK-1 • Mg 1–7</span>
-                                <span class="w-7 h-7 rounded-full bg-[#A6E20E] text-[#1A162E] flex items-center justify-center font-black text-xs">✓</span>
+                <!-- Collapsible Content (Hidden by default) -->
+                <div id="step-1-content" class="hidden mt-4 pt-4 border-t border-[#1A162E]/10">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4">
+                        <div class="rounded-[22px] sm:rounded-[26px] bg-white p-4 sm:p-5 flex flex-col justify-between shadow-sm">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-3.5 py-1 rounded-full bg-[#6528F7] text-white text-xs font-extrabold">CPL-8</span>
+                                    <span class="w-8 h-8 rounded-xl bg-[#EDE7FF] text-[#6528F7] flex items-center justify-center">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                    </span>
+                                </div>
+                                <h3 class="font-extrabold text-base text-[#1A162E]">Rekayasa Perangkat Lunak</h3>
+                                <p class="text-xs sm:text-[13px] text-slate-600 mt-1.5 leading-relaxed">
+                                    Menguasai konsep &amp; implementasi basis data relasional sebagai fondasi utama pengembangan perangkat lunak layanan publik.
+                                </p>
                             </div>
-                            <h3 class="font-extrabold text-base text-[#1A162E]">Perancangan &amp; Normalisasi</h3>
-                            <p class="text-xs sm:text-[13px] text-slate-600 mt-1.5 leading-relaxed">
-                                Diwujudkan melalui penyusunan Aturan Bisnis, DFD, ERD, CDM, PDM, serta Normalisasi hingga 3NF bebas anomali.
-                            </p>
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2 text-[#6528F7]">
+                                <span class="w-2 h-2 rounded-full bg-[#A6E20E]"></span>
+                                <span class="text-xs font-extrabold">Terkait Langsung dengan RPS</span>
+                            </div>
                         </div>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2 text-[#6528F7]">
-                            <span class="w-2 h-2 rounded-full bg-[#A6E20E]"></span>
-                            <span class="text-xs font-extrabold">Terkait Langsung dengan RPS</span>
-                        </div>
-                    </div>
 
-                    <div class="rounded-[22px] sm:rounded-[26px] bg-white p-4 sm:p-5 flex flex-col justify-between shadow-sm">
-                        <div>
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="px-3.5 py-1 rounded-full bg-[#6528F7] text-white text-xs font-extrabold">CPMK-2 • Mg 9–16</span>
-                                <span class="w-7 h-7 rounded-full bg-[#A6E20E] text-[#1A162E] flex items-center justify-center font-black text-xs">✓</span>
+                        <div class="rounded-[22px] sm:rounded-[26px] bg-white p-4 sm:p-5 flex flex-col justify-between shadow-sm">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-3.5 py-1 rounded-full bg-[#6528F7] text-white text-xs font-extrabold">CPMK-1 • Mg 1–7</span>
+                                    <span class="w-8 h-8 rounded-xl bg-[#F4FBE0] text-[#1A162E] flex items-center justify-center">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4v11h-4"/></svg>
+                                    </span>
+                                </div>
+                                <h3 class="font-extrabold text-base text-[#1A162E]">Perancangan &amp; Normalisasi</h3>
+                                <p class="text-xs sm:text-[13px] text-slate-600 mt-1.5 leading-relaxed">
+                                    Diwujudkan melalui penyusunan Aturan Bisnis, DFD, ERD, CDM, PDM, serta Normalisasi hingga 3NF bebas anomali.
+                                </p>
                             </div>
-                            <h3 class="font-extrabold text-base text-[#1A162E]">Implementasi RDBMS &amp; SQL</h3>
-                            <p class="text-xs sm:text-[13px] text-slate-600 mt-1.5 leading-relaxed">
-                                Diwujudkan melalui DDL, DML, dan kueri kompleks (Join, Agregasi, Subquery) di RDBMS serta demo proyek UAS.
-                            </p>
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2 text-[#6528F7]">
+                                <span class="w-2 h-2 rounded-full bg-[#A6E20E]"></span>
+                                <span class="text-xs font-extrabold">Terkait Langsung dengan RPS</span>
+                            </div>
                         </div>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2 text-[#6528F7]">
-                            <span class="w-2 h-2 rounded-full bg-[#A6E20E]"></span>
-                            <span class="text-xs font-extrabold">Terkait Langsung dengan RPS</span>
+
+                        <div class="rounded-[22px] sm:rounded-[26px] bg-white p-4 sm:p-5 flex flex-col justify-between shadow-sm">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="px-3.5 py-1 rounded-full bg-[#6528F7] text-white text-xs font-extrabold">CPMK-2 • Mg 9–16</span>
+                                    <span class="w-8 h-8 rounded-xl bg-[#EDE7FF] text-[#6528F7] flex items-center justify-center">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                                    </span>
+                                </div>
+                                <h3 class="font-extrabold text-base text-[#1A162E]">Implementasi RDBMS &amp; SQL</h3>
+                                <p class="text-xs sm:text-[13px] text-slate-600 mt-1.5 leading-relaxed">
+                                    Diwujudkan melalui DDL, DML, dan kueri kompleks (Join, Agregasi, Subquery) di RDBMS serta demo proyek UAS.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2 text-[#6528F7]">
+                                <span class="w-2 h-2 rounded-full bg-[#A6E20E]"></span>
+                                <span class="text-xs font-extrabold">Terkait Langsung dengan RPS</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -274,47 +302,85 @@
                     <span class="px-3 py-1 rounded-full bg-white/15 text-white text-[11px] sm:text-xs font-extrabold">Maksimal 4 Mahasiswa</span>
                 </div>
 
-                <!-- Callout Box -->
+                <!-- Callout Box with Visual Team & Title Icons -->
                 <div class="rounded-[22px] sm:rounded-[26px] bg-white/15 backdrop-blur-xs p-4 sm:p-5 text-white mb-4 sm:mb-5 border border-white/20">
-                    <div class="flex items-center justify-between gap-2 mb-2.5 sm:mb-3">
+                    <div class="flex items-center justify-between gap-2 mb-3">
                         <span class="px-3 py-1 rounded-full bg-[#A6E20E] text-[#1A162E] text-[11px] sm:text-xs font-extrabold">
                             Ketentuan Tim &amp; Pembagian Judul
                         </span>
                         <span class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#A6E20E] text-[#1A162E] flex items-center justify-center font-black text-xs sm:text-sm shrink-0">!</span>
                     </div>
-                    <div class="rounded-xl sm:rounded-2xl bg-white text-[#1A162E] p-3.5 sm:p-5 text-xs sm:text-sm leading-relaxed font-medium">
-                        <strong>1 Kelompok maksimal 4 Mahasiswa.</strong> Tersedia 5 pilihan judul studi kasus, sehingga <strong>1 judul dapat dipilih oleh maksimal 2 kelompok</strong>.
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="rounded-2xl bg-white text-[#1A162E] p-3.5 sm:p-4 flex items-center gap-3.5 shadow-xs">
+                            <div class="w-11 h-11 rounded-2xl bg-[#EDE7FF] text-[#6528F7] flex items-center justify-center shrink-0">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-xs sm:text-sm font-extrabold text-[#1A162E]">1 Kelompok Max 4 Mahasiswa</div>
+                                <div class="text-[11px] sm:text-xs text-slate-500 mt-0.5">Pembagian peran merata (A1–A4)</div>
+                            </div>
+                        </div>
+                        <div class="rounded-2xl bg-white text-[#1A162E] p-3.5 sm:p-4 flex items-center gap-3.5 shadow-xs">
+                            <div class="w-11 h-11 rounded-2xl bg-[#F4FBE0] text-[#1A162E] flex items-center justify-center shrink-0">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="16" rx="3"/>
+                                    <path d="M12 4v16"/>
+                                    <path d="M7 9h2M15 9h2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-xs sm:text-sm font-extrabold text-[#1A162E]">1 Judul Maksimal 2 Kelompok</div>
+                                <div class="text-[11px] sm:text-xs text-slate-500 mt-0.5">Tersedia 5 pilihan judul studi kasus</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 4 Member Roles -->
+                <!-- 4 Member Roles with Clear Icons -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-3.5">
                     <div class="rounded-[20px] sm:rounded-[24px] bg-white text-[#1A162E] p-4 flex items-start gap-3 shadow-sm">
-                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#6528F7] text-white font-extrabold text-xs flex items-center justify-center shrink-0">A1</div>
+                        <div class="w-10 h-10 rounded-2xl bg-[#6528F7] text-white flex items-center justify-center shrink-0" title="A1 • System Analyst">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                        </div>
                         <div>
+                            <div class="text-[10px] font-extrabold text-[#6528F7] uppercase tracking-wider">Anggota 1</div>
                             <div class="text-xs sm:text-sm font-extrabold text-[#1A162E]">System Analyst</div>
                             <p class="text-xs text-slate-600 mt-1 leading-relaxed">Aturan bisnis, DFD Konteks, DFD Level 1 &amp; Normalisasi 3NF.</p>
                         </div>
                     </div>
                     <div class="rounded-[20px] sm:rounded-[24px] bg-white text-[#1A162E] p-4 flex items-start gap-3 shadow-sm">
-                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#A6E20E] text-[#1A162E] font-extrabold text-xs flex items-center justify-center shrink-0">A2</div>
+                        <div class="w-10 h-10 rounded-2xl bg-[#A6E20E] text-[#1A162E] flex items-center justify-center shrink-0" title="A2 • Database Designer">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        </div>
                         <div>
+                            <div class="text-[10px] font-extrabold text-[#6528F7] uppercase tracking-wider">Anggota 2</div>
                             <div class="text-xs sm:text-sm font-extrabold text-[#1A162E]">Database Designer</div>
                             <p class="text-xs text-slate-600 mt-1 leading-relaxed">ERD, CDM &amp; PDM lengkap dengan tipe data &amp; relasi M:N.</p>
                         </div>
                     </div>
                     <div class="rounded-[20px] sm:rounded-[24px] bg-white text-[#1A162E] p-4 flex items-start gap-3 shadow-sm">
-                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#6528F7] text-white font-extrabold text-xs flex items-center justify-center shrink-0">A3</div>
+                        <div class="w-10 h-10 rounded-2xl bg-[#6528F7] text-white flex items-center justify-center shrink-0" title="A3 • Database Developer">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        </div>
                         <div>
+                            <div class="text-[10px] font-extrabold text-[#6528F7] uppercase tracking-wider">Anggota 3</div>
                             <div class="text-xs sm:text-sm font-extrabold text-[#1A162E]">Database Developer</div>
                             <p class="text-xs text-slate-600 mt-1 leading-relaxed">Skrip DDL (CREATE/ALTER) &amp; pengisian data dummy DML.</p>
                         </div>
                     </div>
                     <div class="rounded-[20px] sm:rounded-[24px] bg-white text-[#1A162E] p-4 flex items-start gap-3 shadow-sm">
-                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#A6E20E] text-[#1A162E] font-extrabold text-xs flex items-center justify-center shrink-0">A4</div>
+                        <div class="w-10 h-10 rounded-2xl bg-[#A6E20E] text-[#1A162E] flex items-center justify-center shrink-0" title="A4 • Data Analyst / QA">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
                         <div>
+                            <div class="text-[10px] font-extrabold text-[#6528F7] uppercase tracking-wider">Anggota 4</div>
                             <div class="text-xs sm:text-sm font-extrabold text-[#1A162E]">Data Analyst / QA</div>
-                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">Kueri DQL (Join, Agregasi, Subquery), laporan &amp; submit artikel IT-Edu.</p>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">Kueri DQL (Join, Agregasi, Subquery), laporan &amp; artikel IT-Edu.</p>
                         </div>
                     </div>
                 </div>
@@ -1065,43 +1131,80 @@
             }
         }
 
+        function toggleStep1() {
+            const content = document.getElementById('step-1-content');
+            const chevron = document.getElementById('step-1-chevron');
+            const btn = document.getElementById('step-1-btn');
+            const isHidden = content.classList.contains('hidden');
+            if (isHidden) {
+                content.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+                btn.setAttribute('aria-expanded', 'true');
+            } else {
+                content.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        }
+
         const navLinks = document.querySelectorAll('.nav-pill');
         function setActiveNav(targetId) {
             navLinks.forEach(link => {
-                if (link.dataset.target === targetId) {
+                const isTarget = link.dataset.target === targetId;
+                const badge = link.querySelector('span:first-child');
+                if (isTarget) {
                     link.classList.add('active');
                     link.classList.remove('text-white/90', 'hover:bg-white/15', 'font-semibold');
-                    if (window.innerWidth < 1024) {
-                        link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    if (badge) {
+                        badge.classList.remove('bg-white/15');
+                        badge.classList.add('bg-[#6528F7]', 'text-white');
                     }
                 } else {
                     link.classList.remove('active');
                     link.classList.add('text-white/90', 'hover:bg-white/15', 'font-semibold');
+                    if (badge) {
+                        badge.classList.remove('bg-[#6528F7]', 'text-white');
+                        badge.classList.add('bg-white/15');
+                    }
                 }
             });
         }
 
         navLinks.forEach(link => {
-            link.addEventListener('click', () => setActiveNav(link.dataset.target));
+            link.addEventListener('click', () => {
+                if (link.dataset.target === 'step-1') {
+                    const content = document.getElementById('step-1-content');
+                    if (content && content.classList.contains('hidden')) {
+                        toggleStep1();
+                    }
+                }
+                setActiveNav(link.dataset.target);
+            });
         });
 
         window.addEventListener('scroll', () => {
-            const sections = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5', 'step-6'];
-            let current = 'step-1';
-            for (const id of sections) {
+            const sectionIds = ['step-1', 'step-2', 'step-3', 'step-4', 'step-5', 'step-6'];
+            let current = sectionIds[0];
+            for (const id of sectionIds) {
                 const el = document.getElementById(id);
-                if (el && el.getBoundingClientRect().top <= 180) {
-                    current = id;
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= 180) {
+                        current = id;
+                    }
                 }
             }
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 40) {
-                current = 'step-6';
-            }
             setActiveNav(current);
+        }, { passive: true });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') hideModal();
         });
 
-        renderCases();
-        renderChecklist();
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCases();
+            renderChecklist();
+        });
     </script>
 </body>
 </html>
